@@ -19,7 +19,7 @@ databases:
 
 services:
   - type: web
-    name: forja-gym
+    name: forja-gym-titan
     runtime: docker
     plan: free
     dockerfilePath: ./Dockerfile
