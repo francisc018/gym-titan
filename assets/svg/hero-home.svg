@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bgH" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2128"/>
+      <stop offset="100%" stop-color="#14141a"/>
+    </linearGradient>
+    <radialGradient id="glowH" cx="78%" cy="22%" r="55%">
+      <stop offset="0%" stop-color="#ff5722" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ff5722" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="gridH" width="46" height="46" patternUnits="userSpaceOnUse">
+      <path d="M46 0H0V46" fill="none" stroke="#2c2e36" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bgH)"/>
+  <rect width="1600" height="900" fill="url(#gridH)"/>
+  <rect width="1600" height="900" fill="url(#glowH)"/>
+
+  <!-- hazard stripe banda inferior -->
+  <g opacity="0.5">
+    <rect x="0" y="820" width="1600" height="22" fill="#ff5722"/>
+    <g fill="#14141a">
+      <polygon points="0,820 40,820 20,842 0,842"/>
+      <polygon points="80,820 120,820 100,842 60,842"/>
+      <polygon points="160,820 200,820 180,842 140,842"/>
+      <polygon points="240,820 280,820 260,842 220,842"/>
+      <polygon points="320,820 360,820 340,842 300,842"/>
+      <polygon points="400,820 440,820 420,842 380,842"/>
+      <polygon points="480,820 520,820 500,842 460,842"/>
+      <polygon points="560,820 600,820 580,842 540,842"/>
+      <polygon points="640,820 680,820 660,842 620,842"/>
+      <polygon points="720,820 760,820 740,842 700,842"/>
+      <polygon points="800,820 840,820 820,842 780,842"/>
+      <polygon points="880,820 920,820 900,842 860,842"/>
+      <polygon points="960,820 1000,820 980,842 940,842"/>
+      <polygon points="1040,820 1080,820 1060,842 1020,842"/>
+      <polygon points="1120,820 1160,820 1140,842 1100,842"/>
+      <polygon points="1200,820 1240,820 1220,842 1180,842"/>
+      <polygon points="1280,820 1320,820 1300,842 1260,842"/>
+      <polygon points="1360,820 1400,820 1380,842 1340,842"/>
+      <polygon points="1440,820 1480,820 1460,842 1420,842"/>
+      <polygon points="1520,820 1560,820 1540,842 1500,842"/>
+    </g>
+  </g>
+
+  <!-- barra olimpica diagonal -->
+  <g transform="rotate(-13 800 470)">
+    <rect x="260" y="452" width="1080" height="20" rx="10" fill="#8b8f9c"/>
+    <!-- discos lado izquierdo -->
+    <circle cx="260" cy="462" r="95" fill="none" stroke="#f2efe9" stroke-width="14"/>
+    <circle cx="260" cy="462" r="60" fill="none" stroke="#ff5722" stroke-width="10"/>
+    <circle cx="180" cy="462" r="70" fill="none" stroke="#f2efe9" stroke-width="12"/>
+    <!-- discos lado derecho -->
+    <circle cx="1340" cy="462" r="95" fill="none" stroke="#f2efe9" stroke-width="14"/>
+    <circle cx="1340" cy="462" r="60" fill="none" stroke="#ff5722" stroke-width="10"/>
+    <circle cx="1420" cy="462" r="70" fill="none" stroke="#f2efe9" stroke-width="12"/>
+    <!-- collarines -->
+    <rect x="330" y="440" width="26" height="44" rx="4" fill="#ff5722"/>
+    <rect x="1244" y="440" width="26" height="44" rx="4" fill="#ff5722"/>
+  </g>
+</svg>

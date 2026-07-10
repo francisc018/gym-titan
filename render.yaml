@@ -1,0 +1,30 @@
+# ============================================================
+# FORJA GYM — render.yaml (Blueprint de Render)
+#
+# Este archivo describe TODO lo que hay que crear en Render:
+# el servicio web (Docker) y la base de datos PostgreSQL, y los
+# conecta automáticamente (Render arma la variable DATABASE_URL
+# sola, no hay que copiar/pegar credenciales a mano).
+#
+# Cómo usarlo: en Render, "New +" → "Blueprint" → conecta este
+# repositorio → Render detecta este archivo y ofrece crear ambos
+# servicios de una vez. Ver docs/DESPLIEGUE-RENDER.md.
+# ============================================================
+
+databases:
+  - name: forja-gym-db
+    plan: free
+    databaseName: forja_gym
+    user: forja_gym_user
+
+services:
+  - type: web
+    name: forja-gym
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: forja-gym-db
+          property: connectionString

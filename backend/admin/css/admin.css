@@ -1,0 +1,104 @@
+/* ============================================================
+   FORJA GYM — admin/css/admin.css
+   Se carga JUNTO a ../css/style.css (hereda variables y fuentes).
+   Aquí solo van los estilos propios del panel: login, tablas y
+   las reglas de impresión para el botón "Imprimir".
+   ============================================================ */
+
+.admin-shell{ min-height:100vh; display:flex; flex-direction:column; }
+.admin-main{ flex:1; padding:clamp(28px,5vw,56px) var(--gutter); }
+
+/* ---------- pantalla de login ---------- */
+.login-wrap{
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
+}
+.login-box{
+  width:100%; max-width:380px;
+  background:var(--steel);
+  border:1px solid var(--line);
+  padding:clamp(28px,5vw,40px);
+}
+.login-box .brand{ justify-content:center; margin-bottom:6px; }
+.login-box .eyebrow{ display:block; text-align:center; margin-bottom:22px; }
+.login-error{
+  margin-top:16px; padding:12px 14px; font-family:var(--mono); font-size:.8rem;
+  border-left:3px solid var(--ember); background:rgba(255,87,34,.08); color:var(--bone);
+}
+
+/* ---------- barra superior del panel ---------- */
+.admin-topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px var(--gutter);
+  border-bottom:1px solid var(--line);
+  background:rgba(20,20,26,.92);
+  position:sticky; top:0; z-index:20;
+}
+.admin-topbar .who{ font-family:var(--mono); font-size:.78rem; color:var(--mist); }
+.admin-topbar .who b{ color:var(--bone); }
+
+/* ---------- tarjetas del dashboard ---------- */
+.admin-cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+@media (max-width:900px){ .admin-cards{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ .admin-cards{ grid-template-columns:1fr; } }
+.admin-card{
+  background:var(--steel); border:1px solid var(--line); padding:24px;
+  display:flex; flex-direction:column; gap:10px;
+}
+.admin-card b.count{ font-family:var(--mono); font-size:2.4rem; color:var(--ember); }
+
+/* ---------- tabla de listado ---------- */
+.table-toolbar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; flex-wrap:wrap; margin-bottom:18px;
+}
+.table-scroll{ overflow-x:auto; border:1px solid var(--line); }
+table.data{
+  width:100%; border-collapse:collapse; min-width:680px; background:var(--steel);
+}
+table.data th{
+  text-align:left; font-family:var(--mono); font-size:.7rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ember);
+  padding:12px 14px; border-bottom:1px solid var(--line); white-space:nowrap;
+}
+table.data td{
+  padding:12px 14px; border-bottom:1px solid var(--line); font-size:.88rem; color:var(--bone);
+}
+table.data tr:hover td{ background:rgba(255,87,34,.05); }
+.empty-state{
+  padding:40px; text-align:center; border:1px dashed var(--line); color:var(--mist);
+  font-family:var(--mono); font-size:.85rem;
+}
+
+/* ---------- impresión: solo se imprime la tabla completa ---------- */
+@page{
+  size: landscape;
+  margin: 10mm;
+}
+@media print{
+  header.site, .admin-topbar, .table-toolbar, .pager, footer.site, .no-print{
+    display:none !important;
+  }
+  body{ background:#fff; color:#000; }
+
+  /* la tabla en pantalla se ve con scroll horizontal (overflow-x:auto);
+     al imprimir eso hace que todo lo que quede "fuera de vista" se recorte
+     en vez de imprimirse. Aquí se anula ese recorte: la tabla pasa a ocupar
+     el ancho real de la hoja (en horizontal) y las columnas se reparten
+     ese ancho entre todas, en vez de expandirse según su contenido. */
+  .table-scroll{
+    border:none; overflow:visible !important; width:auto !important; min-width:0 !important;
+  }
+  table.data{
+    background:#fff; width:100% !important; min-width:0 !important;
+    table-layout:fixed; font-size:6.5pt;
+  }
+  table.data th, table.data td{
+    padding:4px 5px; white-space:normal !important; word-break:break-word;
+    overflow-wrap:break-word;
+  }
+  table.data th{ color:#000; border-bottom:1px solid #000; letter-spacing:.02em; }
+  table.data td{ color:#000; }
+  table.data tr{ page-break-inside:avoid; }
+}
